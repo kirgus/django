@@ -1,0 +1,23 @@
+{% extends "games/base.html" %}
+
+{% block content %}
+
+{% load bootstrap5 %}
+
+<form action="{% url 'register' %}" method="post">
+    <div class="form-group">
+
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">Регистрация</button>
+        {% endbuttons %}
+
+        <input type="hidden" name="next" value="{% url 'games:games' %}"/>
+    </div>
+</form>
+
+{% endblock content %}
+

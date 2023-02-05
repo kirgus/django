@@ -1,0 +1,22 @@
+{% extends "games/base.html" %}
+
+{% block content %}
+
+<h3>Добавление новой игры</h3>
+
+{% load bootstrap5 %}
+
+<form action="{% url 'games:new-game' %}" method="post">
+
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">Добавить игру</button>
+    {% endbuttons %}
+
+</form>
+
+{% endblock content %}
+

@@ -1,0 +1,35 @@
+{% extends "games/base.html" %}
+
+{% block content %}
+
+<div class="bg-light py-4 px-3 my-2 border rounded">
+    <h5>Категория игр</h5>
+
+    <div class="d-flex flex-row bd-highlight mb-3">
+
+        {% for category in categories %}
+        <a href="{% url 'games:category' category.pk %}" class="me-3">{{ category.name }}</a>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% for game in games %}
+
+<div class="card mb-4">
+    <div class="card-body">
+
+        {% if game.img %}
+        <img src="{{ game.img.url }}" class="card-img-top">
+        {% endif %}
+
+        <p class="card-text fs-4">{{ game.name }}</p>
+        <p class="card-text">{{ game.description }}</p>
+        <p class="card-text text-muted">{{ game.created_at | date:"d.m.Y" }}</p>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}
+

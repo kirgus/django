@@ -1,0 +1,26 @@
+{% extends "games/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Логин или пароль неверны. Пожалуйста, попробуйте снова.</p>
+{% endif %}
+
+
+{% load bootstrap5 %}
+
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">Войти</button>
+    {% endbuttons %}
+
+    <input type="hidden" name="next" value="{% url 'games:games' %}"/>
+</form>
+
+
+{% endblock content %}
+
